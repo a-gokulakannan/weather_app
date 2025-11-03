@@ -32,7 +32,7 @@ jobs:
       - name: Run SonarQube Analysis
         shell: powershell
         run: |
-          sonar-scanner -D"sonar.projectBaseDir=." -D"sonar.projectKey=a-gokulakannan_weather_app_63fd7f83-f3e7-4e8b-8ea8-c2d542711dae" -D"sonar.sources=." -D"sonar.host.url=${{ secrets.SONAR_HOST_URL }}" -D"sonar.login=${{ secrets.SONAR_TOKEN }}" -D"sonar.sourceEncoding=UTF-8"
+          sonar-scanner -D"sonar.projectBaseDir=." -D"sonar.projectKey=a-gokulakannan_weather_app_63fd7f83-f3e7-4e8b-8ea8-c2d542711dae" -D"sonar.sources=." -D"sonar.host.url=${{ secrets.SONAR_HOST_URL }}" -D"sonar.token=${{ secrets.SONAR_TOKEN }}" -D"sonar.sourceEncoding=UTF-8"
 
       # Optional: Quality Gate check
       # - uses: SonarSource/sonarqube-quality-gate-action@v1
