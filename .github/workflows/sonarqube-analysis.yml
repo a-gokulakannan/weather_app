@@ -18,7 +18,7 @@ jobs:
 
       # Manually download and extract SonarScanner CLI (works on Windows)
       - name: Install SonarScanner CLI manually
-        shell: pwsh
+        shell: powershell
         run: |
           $ErrorActionPreference = "Stop"
           $scannerVersion = "7.2.0.5079"
@@ -30,7 +30,7 @@ jobs:
           echo "C:\sonar-scanner\sonar-scanner-$scannerVersion-windows-x64\bin" | Out-File -Append -FilePath $env:GITHUB_PATH
 
       - name: Run SonarQube Analysis
-        shell: pwsh
+        shell: powershell
         run: |
           sonar-scanner -D"sonar.projectBaseDir=." -D"sonar.projectKey=a-gokulakannan_weather_app_63fd7f83-f3e7-4e8b-8ea8-c2d542711dae" -D"sonar.sources=." -D"sonar.host.url=${{ secrets.SONAR_HOST_URL }}" -D"sonar.login=${{ secrets.SONAR_TOKEN }}" -D"sonar.sourceEncoding=UTF-8"
 
