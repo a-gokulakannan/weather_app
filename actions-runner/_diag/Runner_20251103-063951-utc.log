@@ -1,0 +1,7 @@
+[2025-11-03 06:39:51Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2025-11-03 06:39:51Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 06:39:51Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 06:39:51Z INFO HostContext] Well known config file 'Credentials': 'B:\JS-sample\weather_app\actions-runner\.credentials'
+[2025-11-03 06:39:52Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 06:39:52Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 06:39:52Z INFO HostContext] Well known config file 'Runner': 'B:\JS-sample\weather_app\actions-runner\.runner'
