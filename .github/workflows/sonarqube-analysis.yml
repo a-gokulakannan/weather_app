@@ -5,22 +5,33 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
     name: Test and Analyze
-    runs-on: [self-hosted, Windows, X64] 
+    runs-on: [self-hosted, Windows, X64]
     
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  # Shallow clones should be disabled for better relevancy of analysis
+
+      # 🩹 Fix: Rename downloaded temp files to .zip so PowerShell can extract them
+      - name: Fix zip extension issue on Windows
+        if: runner.os == 'Windows'
+        run: |
+          cd $env:RUNNER_TEMP
+          Get-ChildItem | ForEach-Object {
+            if (-not $_.Name.EndsWith('.zip')) {
+              Rename-Item $_.FullName ($_.FullName + '.zip')
+            }
+          }
+
       - uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
+
+      # If you wish to fail your job when the Quality Gate is red, uncomment the following:
       # - uses: SonarSource/sonarqube-quality-gate-action@v1
       #   timeout-minutes: 5
       #   env:

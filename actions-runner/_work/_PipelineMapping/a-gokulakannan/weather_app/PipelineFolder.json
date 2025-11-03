@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "a-gokulakannan/weather_app",
+  "pipelineDirectory": "weather_app",
+  "workspaceDirectory": "weather_app\\weather_app",
+  "repositories": {
+    "a-gokulakannan/weather_app": {
+      "repositoryPath": "weather_app\\weather_app",
+      "lastRunOn": "11/03/2025 12:37:05 +05:30"
+    }
+  },
+  "lastRunOn": "11/03/2025 12:37:05 +05:30"
+}
