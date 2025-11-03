@@ -9,29 +9,32 @@ jobs:
   build:
     name: Test and Analyze
     runs-on: [self-hosted, Windows, X64]
-    
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for better relevancy of analysis
+          fetch-depth: 0
 
-      # 🩹 Fix: Rename downloaded temp files to .zip so PowerShell can extract them
-      - name: Fix zip extension issue on Windows
-        if: runner.os == 'Windows'
+      # Manually download and extract SonarScanner CLI (works on Windows)
+      - name: Install SonarScanner CLI manually
+        shell: pwsh
         run: |
-          cd $env:RUNNER_TEMP
-          Get-ChildItem | ForEach-Object {
-            if (-not $_.Name.EndsWith('.zip')) {
-              Rename-Item $_.FullName ($_.FullName + '.zip')
-            }
-          }
+          $ErrorActionPreference = "Stop"
+          $scannerVersion = "7.2.0.5079"
+          $scannerZip = "sonar-scanner-cli-$scannerVersion-windows-x64.zip"
+          $downloadUrl = "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/$scannerZip"
+          Write-Host "Downloading SonarScanner from $downloadUrl..."
+          Invoke-WebRequest -Uri $downloadUrl -OutFile $scannerZip
+          Expand-Archive -Path $scannerZip -DestinationPath "C:\sonar-scanner" -Force
+          echo "C:\sonar-scanner\sonar-scanner-$scannerVersion-windows-x64\bin" | Out-File -Append -FilePath $env:GITHUB_PATH
 
-      - uses: SonarSource/sonarqube-scan-action@v6
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Run SonarQube Analysis
+        shell: pwsh
+        run: |
+          sonar-scanner -D"sonar.projectBaseDir=." -D"sonar.projectKey=a-gokulakannan_weather_app_63fd7f83-f3e7-4e8b-8ea8-c2d542711dae" -D"sonar.sources=." -D"sonar.host.url=${{ secrets.SONAR_HOST_URL }}" -D"sonar.login=${{ secrets.SONAR_TOKEN }}" -D"sonar.sourceEncoding=UTF-8"
 
-      # If you wish to fail your job when the Quality Gate is red, uncomment the following:
+      # Optional: Quality Gate check
       # - uses: SonarSource/sonarqube-quality-gate-action@v1
       #   timeout-minutes: 5
       #   env:

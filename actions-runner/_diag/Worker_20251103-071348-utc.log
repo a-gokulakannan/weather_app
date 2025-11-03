@@ -1,0 +1,3822 @@
+[2025-11-03 07:13:48Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known config file 'Credentials': 'B:\JS-sample\weather_app\actions-runner\.credentials'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known config file 'Runner': 'B:\JS-sample\weather_app\actions-runner\.runner'
+[2025-11-03 07:13:48Z INFO Worker] Version: 2.329.0
+[2025-11-03 07:13:48Z INFO Worker] Commit: c76c59996c8fa32e989164a5a695efb12608ae5a
+[2025-11-03 07:13:48Z INFO Worker] Culture: en-US
+[2025-11-03 07:13:48Z INFO Worker] UI Culture: en-US
+[2025-11-03 07:13:48Z INFO Worker] Waiting to receive the job message from the channel.
+[2025-11-03 07:13:48Z INFO ProcessChannel] Receiving message of length 21027, with hash '5815235bb4c648e60d742ad6760274905b12dc874c4ee08b4d49a6f80a2e7df2'
+[2025-11-03 07:13:48Z INFO Worker] Message received.
+[2025-11-03 07:13:48Z INFO Worker] Job message:
+ {
+  "fileTable": [
+    ".github/workflows/sonarqube-analysis.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/checkout",
+        "ref": "v4",
+        "repositoryType": "GitHub"
+      },
+      "contextName": "__actions_checkout",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 16,
+        "col": 11,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 16,
+              "col": 11,
+              "lit": "fetch-depth"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 16,
+              "col": 24,
+              "lit": "0"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "84b9920b-d685-4839-b709-0a8e37b772f1",
+      "name": "__actions_checkout"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 19,
+        "col": 15,
+        "lit": "Fix zip extension issue on Windows"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 21,
+              "col": 14,
+              "lit": "cd $env:RUNNER_TEMP\nGet-ChildItem | ForEach-Object {\n  if (-not $_.Name.EndsWith('.zip')) {\n    Rename-Item $_.FullName ($_.FullName + '.zip')\n  }\n}\n"
+            }
+          }
+        ]
+      },
+      "condition": "success() && (runner.os == 'Windows')",
+      "id": "2e5c86e1-c4e2-492a-ad9f-8467d85c8d1b",
+      "name": "__run"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "SonarSource/sonarqube-scan-action",
+        "ref": "v6",
+        "repositoryType": "GitHub"
+      },
+      "contextName": "__SonarSource_sonarqube-scan-action",
+      "environment": {
+        "type": 2,
+        "file": 1,
+        "line": 31,
+        "col": 11,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 31,
+              "col": 11,
+              "lit": "SONAR_TOKEN"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 31,
+              "col": 24,
+              "expr": "secrets.SONAR_TOKEN"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 32,
+              "col": 11,
+              "lit": "SONAR_HOST_URL"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 32,
+              "col": 27,
+              "expr": "secrets.SONAR_HOST_URL"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "5719718a-5bec-4759-9f9c-c6a909ad586d",
+      "name": "__SonarSource_sonarqube-scan-action"
+    }
+  ],
+  "variables": {
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "RunService.FixEmbeddedIssues": {
+      "value": "true"
+    },
+    "SONAR_HOST_URL": {
+      "value": "***",
+      "isSecret": true
+    },
+    "SONAR_TOKEN": {
+      "value": "***",
+      "isSecret": true
+    },
+    "actions_add_check_run_id_to_job_context": {
+      "value": "true"
+    },
+    "actions_container_action_runner_temp": {
+      "value": "false"
+    },
+    "actions_display_helpful_actions_download_errors": {
+      "value": "true"
+    },
+    "actions_skip_retry_complete_job_upon_known_errors": {
+      "value": "true"
+    },
+    "actions_uses_cache_service_v2": {
+      "value": "true"
+    },
+    "github_token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.from_run_service": {
+      "value": "true"
+    },
+    "system.github.job": {
+      "value": "build"
+    },
+    "system.github.launch_endpoint": {
+      "value": "https://launch.actions.githubusercontent.com"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "true"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Contents\":\"read\",\"Metadata\":\"read\",\"Packages\":\"read\"}"
+    },
+    "system.orchestrationId": {
+      "value": "bcce249e-5ffa-4975-a3aa-e52782ef9ce0.build.__default"
+    },
+    "system.phaseDisplayName": {
+      "value": "Test and Analyze"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "RunnerJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "actions",
+    "version": 0,
+    "planId": "bcce249e-5ffa-4975-a3aa-e52782ef9ce0",
+    "planGroup": null,
+    "artifactUri": null,
+    "artifactLocation": null,
+    "definition": null,
+    "owner": null
+  },
+  "timeline": {
+    "id": "bcce249e-5ffa-4975-a3aa-e52782ef9ce0",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "cb93bdec-2fb0-579e-84eb-a9d6b3839cde",
+  "jobDisplayName": "Test and Analyze",
+  "jobName": "__default",
+  "requestId": 0,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "",
+          "ServerName": "",
+          "CacheServerUrl": "https://artifactcache.actions.githubusercontent.com/5sBAymbPaPxR1O0W6gtqzEvBhExuJXipg9lLJhvF680hLTVAYW/",
+          "FeedStreamUrl": "wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "PipelinesServiceUrl": "https://pipelinesghubeus8.actions.githubusercontent.com/5sBAymbPaPxR1O0W6gtqzEvBhExuJXipg9lLJhvF680hLTVAYW/",
+          "GenerateIdTokenUrl": ""
+        },
+        "name": "SystemVssConnection",
+        "url": "https://run-actions-1-azure-eastus.actions.githubusercontent.com/114/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": "***"
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "8c7bc9b9a340216be690672e4323bdb82d5e47a1"
+        },
+        {
+          "k": "repository",
+          "v": "a-gokulakannan/weather_app"
+        },
+        {
+          "k": "repository_owner",
+          "v": "a-gokulakannan"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "73771311"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/a-gokulakannan/weather_app.git"
+        },
+        {
+          "k": "run_id",
+          "v": "19026738537"
+        },
+        {
+          "k": "run_number",
+          "v": "11"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "actor_id",
+          "v": "73771311"
+        },
+        {
+          "k": "actor",
+          "v": "a-gokulakannan"
+        },
+        {
+          "k": "workflow",
+          "v": "Build"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "8c7bc9b9a340216be690672e4323bdb82d5e47a1"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "bf1094095507844d99be39c0d661ef5c7ef3fe51"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "satheesh@meitheetech.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Satheesh"
+                              },
+                              {
+                                "k": "username",
+                                "v": "satheesh-meithee"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "satheesh@meitheetech.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Satheesh"
+                              },
+                              {
+                                "k": "username",
+                                "v": "satheesh-meithee"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": false
+                        },
+                        {
+                          "k": "id",
+                          "v": "8386d0c2e24a5649a2bad2edfece0ce2505bf412"
+                        },
+                        {
+                          "k": "message",
+                          "v": "Updated prop"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2025-11-03T12:42:52+05:30"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "94e5a471e7a1d3c4f3734640b9a1d7ea031b4acc"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/a-gokulakannan/weather_app/commit/8386d0c2e24a5649a2bad2edfece0ce2505bf412"
+                        }
+                      ]
+                    },
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "73771311+a-gokulakannan@users.noreply.github.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "A Gokulakannan"
+                              },
+                              {
+                                "k": "username",
+                                "v": "a-gokulakannan"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "noreply@github.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "GitHub"
+                              },
+                              {
+                                "k": "username",
+                                "v": "web-flow"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "8c7bc9b9a340216be690672e4323bdb82d5e47a1"
+                        },
+                        {
+                          "k": "message",
+                          "v": "Merge pull request #10 from a-gokulakannan/dev\n\nUpdated prop"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2025-11-03T12:43:42+05:30"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "94e5a471e7a1d3c4f3734640b9a1d7ea031b4acc"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/a-gokulakannan/weather_app/commit/8c7bc9b9a340216be690672e4323bdb82d5e47a1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.com/a-gokulakannan/weather_app/compare/bf1094095507...8c7bc9b9a340"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "73771311+a-gokulakannan@users.noreply.github.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "A Gokulakannan"
+                          },
+                          {
+                            "k": "username",
+                            "v": "a-gokulakannan"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "noreply@github.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "GitHub"
+                          },
+                          {
+                            "k": "username",
+                            "v": "web-flow"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "8c7bc9b9a340216be690672e4323bdb82d5e47a1"
+                    },
+                    {
+                      "k": "message",
+                      "v": "Merge pull request #10 from a-gokulakannan/dev\n\nUpdated prop"
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2025-11-03T12:43:42+05:30"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "94e5a471e7a1d3c4f3734640b9a1d7ea031b4acc"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/a-gokulakannan/weather_app/commit/8c7bc9b9a340216be690672e4323bdb82d5e47a1"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "73771311+a-gokulakannan@users.noreply.github.com"
+                    },
+                    {
+                      "k": "name",
+                      "v": "a-gokulakannan"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/a-gokulakannan/weather_app.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1716311664.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "a-gokulakannan/weather_app"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/a-gokulakannan/weather_app.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": false
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "homepage",
+                      "v": "https://weather-app-gamma-six-12.vercel.app"
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/a-gokulakannan/weather_app"
+                    },
+                    {
+                      "k": "id",
+                      "v": 803952769.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "JavaScript"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "weather_app"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDOL-tYgQ"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/73771311?v=4"
+                          },
+                          {
+                            "k": "email",
+                            "v": "73771311+a-gokulakannan@users.noreply.github.com"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/a-gokulakannan/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/a-gokulakannan/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/a-gokulakannan/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/a-gokulakannan/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/a-gokulakannan"
+                          },
+                          {
+                            "k": "id",
+                            "v": 73771311.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "a-gokulakannan"
+                          },
+                          {
+                            "k": "name",
+                            "v": "a-gokulakannan"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "MDQ6VXNlcjczNzcxMzEx"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/a-gokulakannan/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/a-gokulakannan/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/a-gokulakannan/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/a-gokulakannan/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/a-gokulakannan/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/a-gokulakannan"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1762154022.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 175294.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:a-gokulakannan/weather_app.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/a-gokulakannan/weather_app"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2025-11-03T07:07:02Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/repos/a-gokulakannan/weather_app"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/73771311?v=4"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/a-gokulakannan/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/a-gokulakannan/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/a-gokulakannan/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/a-gokulakannan/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/a-gokulakannan"
+                    },
+                    {
+                      "k": "id",
+                      "v": 73771311.0
+                    },
+                    {
+                      "k": "login",
+                      "v": "a-gokulakannan"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "MDQ6VXNlcjczNzcxMzEx"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/a-gokulakannan/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/a-gokulakannan/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/a-gokulakannan/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/a-gokulakannan/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/a-gokulakannan/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/a-gokulakannan"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "workflow_ref",
+          "v": "a-gokulakannan/weather_app/.github/workflows/sonarqube-analysis.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "8c7bc9b9a340216be690672e4323bdb82d5e47a1"
+        },
+        {
+          "k": "repository_id",
+          "v": "803952769"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "a-gokulakannan"
+        }
+      ]
+    },
+    "inputs": {
+      "t": 2
+    },
+    "job": {
+      "t": 2,
+      "d": [
+        {
+          "k": "check_run_id",
+          "v": 54331709931.0
+        }
+      ]
+    },
+    "matrix": null,
+    "needs": {
+      "t": 2
+    },
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "vars": {
+      "t": 2
+    }
+  },
+  "billingOwnerId": "U_kgDOBGWpLw"
+}
+[2025-11-03 07:13:48Z INFO JobRunner] Job ID cb93bdec-2fb0-579e-84eb-a9d6b3839cde
+[2025-11-03 07:13:48Z INFO ConfigurationStore] currentAssemblyLocation: B:\JS-sample\weather_app\actions-runner\bin\Runner.Worker.dll
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO ConfigurationStore] binPath: B:\JS-sample\weather_app\actions-runner\bin
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO ConfigurationStore] RootFolder: B:\JS-sample\weather_app\actions-runner
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known config file 'Runner': 'B:\JS-sample\weather_app\actions-runner\.runner'
+[2025-11-03 07:13:48Z INFO ConfigurationStore] ConfigFilePath: B:\JS-sample\weather_app\actions-runner\.runner
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known config file 'MigratedRunner': 'B:\JS-sample\weather_app\actions-runner\.runner_migrated'
+[2025-11-03 07:13:48Z INFO ConfigurationStore] MigratedConfigFilePath: B:\JS-sample\weather_app\actions-runner\.runner_migrated
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known config file 'Credentials': 'B:\JS-sample\weather_app\actions-runner\.credentials'
+[2025-11-03 07:13:48Z INFO ConfigurationStore] CredFilePath: B:\JS-sample\weather_app\actions-runner\.credentials
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known config file 'MigratedCredentials': 'B:\JS-sample\weather_app\actions-runner\.credentials_migrated'
+[2025-11-03 07:13:48Z INFO ConfigurationStore] MigratedCredFilePath: B:\JS-sample\weather_app\actions-runner\.credentials_migrated
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known config file 'Service': 'B:\JS-sample\weather_app\actions-runner\.service'
+[2025-11-03 07:13:48Z INFO ConfigurationStore] ServiceConfigFilePath: B:\JS-sample\weather_app\actions-runner\.service
+[2025-11-03 07:13:48Z INFO ConfigurationStore] Read setting file: 401 chars
+[2025-11-03 07:13:48Z INFO JobRunner] Initializing launch client
+[2025-11-03 07:13:48Z INFO JobServerQueue] Initializing results client
+[2025-11-03 07:13:48Z INFO ResultServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2025-11-03 07:13:48Z INFO ResultServer] Attempting to start websocket client with delay 00:00:00.
+[2025-11-03 07:13:48Z INFO JobServerQueue] Start process web console line queue.
+[2025-11-03 07:13:48Z INFO JobServerQueue] Start process file upload queue.
+[2025-11-03 07:13:48Z INFO JobServerQueue] Start results file upload queue.
+[2025-11-03 07:13:48Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-11-03 07:13:48Z INFO JobServerQueue] Start process timeline update queue.
+[2025-11-03 07:13:48Z INFO ExecutionContext] Initializing Job context
+[2025-11-03 07:13:48Z INFO ExecutionContext] Initialize GitHub context
+[2025-11-03 07:13:48Z INFO ExecutionContext] Initialize Env context
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:48Z INFO JobRunner] Starting the job execution context.
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:48Z INFO JobRunner] Validating directory permissions for: 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Tools': 'B:\JS-sample\weather_app\actions-runner\_work\_tool'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:13:48Z INFO JobRunner] Getting job extension.
+[2025-11-03 07:13:48Z INFO JobRunner] Initialize job. Getting all job steps.
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known config file 'Credentials': 'B:\JS-sample\weather_app\actions-runner\.credentials'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known config file 'SetupInfo': 'B:\JS-sample\weather_app\actions-runner\.setup_info'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:48Z INFO PipelineDirectoryManager] Loading tracking config if exists: B:\JS-sample\weather_app\actions-runner\_work\_PipelineMapping\a-gokulakannan/weather_app\PipelineFolder.json
+[2025-11-03 07:13:48Z INFO PipelineDirectoryManager] Updating job run properties.
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:48Z INFO JobExtension] Downloading actions
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:48Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:48Z INFO Worker] Listening for cancel message from the channel.
+[2025-11-03 07:13:48Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2025-11-03 07:13:49Z INFO ResultServer] Successfully started websocket client.
+[2025-11-03 07:13:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8e3d9a06-865b-4859-9a0b-80ef96b57ab8', success rate: 1/1.
+[2025-11-03 07:13:49Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:49Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:49Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:49Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:49Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:49Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:49Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:49Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:49Z INFO ActionManager] Save archive 'https://api.github.com/repos/actions/checkout/zipball/08eba0b27e820071cde6df949e0beb9ba4906955' into B:\JS-sample\weather_app\actions-runner\_work\_actions\_temp_c5eb93cb-d86d-4696-bdf6-ab36dacb6eca\f03e7871-b2ad-4f40-bc33-1d83c11fb4c6.zip.
+[2025-11-03 07:13:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8e3d9a06-865b-4859-9a0b-80ef96b57ab8', success rate: 1/1.
+[2025-11-03 07:13:49Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2025-11-03 07:13:50Z INFO ActionManager] Request URL: https://api.github.com/repos/actions/checkout/zipball/08eba0b27e820071cde6df949e0beb9ba4906955 X-GitHub-Request-Id: C141:22C74B:26E5C:20466F:6908562E Http Status: OK
+[2025-11-03 07:13:51Z INFO ActionManager] Finished getting action repository.
+[2025-11-03 07:13:51Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:51Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:51Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:51Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:51Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:51Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:51Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:51Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:51Z INFO ActionManager] Save archive 'https://api.github.com/repos/SonarSource/sonarqube-scan-action/zipball/fd88b7d7ccbaefd23d8f36f73b59db7a3d246602' into B:\JS-sample\weather_app\actions-runner\_work\_actions\_temp_84043486-3da1-475b-9c0f-6f62f1de05a8\e1b3cefb-b7aa-4f7f-9b0c-42f01dd714bb.zip.
+[2025-11-03 07:13:51Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8e3d9a06-865b-4859-9a0b-80ef96b57ab8', success rate: 1/1.
+[2025-11-03 07:13:52Z INFO ActionManager] Request URL: https://api.github.com/repos/SonarSource/sonarqube-scan-action/zipball/fd88b7d7ccbaefd23d8f36f73b59db7a3d246602 X-GitHub-Request-Id: C143:1989D4:7584:452B0:69085630 Http Status: OK
+[2025-11-03 07:13:52Z INFO ActionManager] Finished getting action repository.
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:52Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:52Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-03 07:13:52Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:52Z INFO ActionManager] Load action that reference repository from 'B:\JS-sample\weather_app\actions-runner\_work\_actions\actions\checkout\v4'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:52Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-03 07:13:52Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-11-03 07:13:52Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-11-03 07:13:52Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:52Z INFO ActionManifestManager] Ignore action property branding.
+[2025-11-03 07:13:52Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Official SonarQube Scan",
+  "description": "Scan your code with SonarQube Server and Cloud to detect issues in 30+ languages. (Formerly SonarQube and SonarCloud)\n",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "args"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 13,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 14,
+          "col": 3,
+          "lit": "projectBaseDir"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 14,
+          "lit": "."
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 18,
+          "col": 3,
+          "lit": "scannerVersion"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 22,
+          "col": 14,
+          "lit": "7.2.0.5079"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 23,
+          "col": 3,
+          "lit": "scannerBinariesUrl"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 14,
+          "lit": "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": false,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": null,
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-03 07:13:52Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:52Z INFO ActionManager] Load action that reference repository from 'B:\JS-sample\weather_app\actions-runner\_work\_actions\SonarSource\sonarqube-scan-action\v6'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:52Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:52Z INFO ActionManifestManager] Ignore action property branding.
+[2025-11-03 07:13:52Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Official SonarQube Scan",
+  "description": "Scan your code with SonarQube Server and Cloud to detect issues in 30+ languages. (Formerly SonarQube and SonarCloud)\n",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "args"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 13,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 14,
+          "col": 3,
+          "lit": "projectBaseDir"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 14,
+          "lit": "."
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 18,
+          "col": 3,
+          "lit": "scannerVersion"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 22,
+          "col": 14,
+          "lit": "7.2.0.5079"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 23,
+          "col": 3,
+          "lit": "scannerBinariesUrl"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 14,
+          "lit": "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": false,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": null,
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-03 07:13:52Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-11-03 07:13:52Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-11-03 07:13:52Z INFO ActionManager] Action post node.js file: N/A.
+[2025-11-03 07:13:52Z INFO JobExtension] Adding .
+[2025-11-03 07:13:53Z INFO JobExtension] Adding .
+[2025-11-03 07:13:53Z INFO JobExtension] Adding .
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:53Z INFO JobExtension] Total accessible running process: 305.
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:53Z INFO JobExtension] Start checking service connectivity in background.
+[2025-11-03 07:13:53Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "8e3d9a06-865b-4859-9a0b-80ef96b57ab8",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 5,
+  "startTime": "2025-11-03T07:13:48.6005826Z",
+  "finishTime": "2025-11-03T07:13:53.0246431Z"
+}.
+[2025-11-03 07:13:53Z INFO JobRunner] Total job steps: 3.
+[2025-11-03 07:13:53Z INFO JobRunner] Run all job steps.
+[2025-11-03 07:13:53Z INFO StepsRunner] Processing step: DisplayName='Run actions/checkout@v4'
+[2025-11-03 07:13:53Z INFO StepsRunner] Evaluating: success()
+[2025-11-03 07:13:53Z INFO StepsRunner] Result: true
+[2025-11-03 07:13:53Z INFO StepsRunner] Starting the step.
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:53Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-03 07:13:53Z INFO StepsRunner] Location: 'C:\Windows\System32\chcp.COM'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\System32\chcp.COM'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Working directory: 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper] Process started with process id 18052, waiting for process exit.
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper] Finished process 18052 with exit code 0, and elapsed time 00:00:00.0143044.
+[2025-11-03 07:13:53Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:53Z INFO ActionManager] Load action that reference repository from 'B:\JS-sample\weather_app\actions-runner\_work\_actions\actions\checkout\v4'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-03 07:13:53Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-11-03 07:13:53Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-11-03 07:13:53Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-11-03 07:13:53Z INFO ExecutionContext] Reserve record order 5 to 8 for post job actions.
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:13:53Z INFO ExecutionContext] Write event payload to B:\JS-sample\weather_app\actions-runner\_work\_temp\_github_workflow\event.json
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:13:53Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "a-gokulakannan/weather_app"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:13:53Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-11-03 07:13:53Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-03 07:13:53Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record '8e3d9a06-865b-4859-9a0b-80ef96b57ab8', success rate: 1/1.
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:53Z INFO HostContext] Well known directory 'Externals': 'B:\JS-sample\weather_app\actions-runner\externals'
+[2025-11-03 07:13:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84b9920b-d685-4839-b709-0a8e37b772f1', success rate: 1/1.
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   File name: 'B:\JS-sample\weather_app\actions-runner\externals\node20\bin\node.exe'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Arguments: '"B:\JS-sample\weather_app\actions-runner\_work\_actions\actions\checkout\v4\dist/index.js"'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Working directory: 'B:\JS-sample\weather_app\actions-runner\_work\weather_app\weather_app'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-03 07:13:53Z INFO ProcessInvokerWrapper] Process started with process id 27684, waiting for process exit.
+[2025-11-03 07:13:53Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-03 07:13:53Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, B:\JS-sample\weather_app\actions-runner\_diag\blocks\bcce249e-5ffa-4975-a3aa-e52782ef9ce0_8e3d9a06-865b-4859-9a0b-80ef96b57ab8.1
+[2025-11-03 07:13:53Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-11-03 07:13:53Z INFO AddMaskCommandExtension] Add new secret mask with length of 76
+[2025-11-03 07:13:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84b9920b-d685-4839-b709-0a8e37b772f1', success rate: 1/1.
+[2025-11-03 07:13:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84b9920b-d685-4839-b709-0a8e37b772f1', success rate: 1/1.
+[2025-11-03 07:13:55Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-11-03 07:13:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84b9920b-d685-4839-b709-0a8e37b772f1', success rate: 1/1.
+[2025-11-03 07:13:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84b9920b-d685-4839-b709-0a8e37b772f1', success rate: 1/1.
+[2025-11-03 07:13:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84b9920b-d685-4839-b709-0a8e37b772f1', success rate: 1/1.
+[2025-11-03 07:13:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84b9920b-d685-4839-b709-0a8e37b772f1', success rate: 1/1.
+[2025-11-03 07:13:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84b9920b-d685-4839-b709-0a8e37b772f1', success rate: 1/1.
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper] Finished process 27684 with exit code 0, and elapsed time 00:00:06.3196909.
+[2025-11-03 07:13:59Z INFO CreateStepSummaryCommand] Step Summary file (B:\JS-sample\weather_app\actions-runner\_work\_temp\_runner_file_commands\step_summary_d330dbf1-df74-462c-aad0-92e6246f2d73) is empty; skipping attachment upload
+[2025-11-03 07:13:59Z INFO StepsRunner] Step result: 
+[2025-11-03 07:13:59Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "84b9920b-d685-4839-b709-0a8e37b772f1",
+  "stepContextName": "__actions_checkout",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 7,
+  "startTime": "2025-11-03T07:13:53.0483433Z",
+  "finishTime": "2025-11-03T07:13:59.500751Z"
+}.
+[2025-11-03 07:13:59Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-03 07:13:59Z INFO StepsRunner] Current state: job state = ''
+[2025-11-03 07:13:59Z INFO StepsRunner] Processing step: DisplayName='Fix zip extension issue on Windows'
+[2025-11-03 07:13:59Z INFO StepsRunner] Evaluating: (success() && (runner.os == 'Windows'))
+[2025-11-03 07:13:59Z INFO StepsRunner] Expanded: (true && ('Windows' == 'Windows'))
+[2025-11-03 07:13:59Z INFO StepsRunner] Result: true
+[2025-11-03 07:13:59Z INFO StepsRunner] Starting the step.
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:59Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-03 07:13:59Z INFO StepsRunner] Location: 'C:\Windows\System32\chcp.COM'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\System32\chcp.COM'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   Working directory: 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper] Process started with process id 21528, waiting for process exit.
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:13:59Z INFO ProcessInvokerWrapper] Finished process 21528 with exit code 0, and elapsed time 00:00:00.0124505.
+[2025-11-03 07:13:59Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:13:59Z INFO ExecutionContext] Write event payload to B:\JS-sample\weather_app\actions-runner\_work\_temp\_github_workflow\event.json
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:13:59Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:13:59Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-03 07:13:59Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-03 07:13:59Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-03 07:13:59Z INFO ScriptHandler] Which2: 'pwsh'
+[2025-11-03 07:13:59Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-11-03 07:13:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record '84b9920b-d685-4839-b709-0a8e37b772f1', success rate: 1/1.
+[2025-11-03 07:13:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2e5c86e1-c4e2-492a-ad9f-8467d85c8d1b', success rate: 1/1.
+[2025-11-03 07:14:00Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-03 07:14:00Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, B:\JS-sample\weather_app\actions-runner\_diag\blocks\bcce249e-5ffa-4975-a3aa-e52782ef9ce0_84b9920b-d685-4839-b709-0a8e37b772f1.1
+[2025-11-03 07:14:01Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-11-03 07:14:01Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2025-11-03 07:14:01Z INFO ScriptHandler] Defaulting to powershell
+[2025-11-03 07:14:01Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-03 07:14:01Z INFO ScriptHandler] Location: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-03 07:14:01Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:01Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:01Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:01Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:14:01Z INFO ScriptHandler] Which2: 'pwsh'
+[2025-11-03 07:14:01Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2025-11-03 07:14:01Z INFO ScriptHandler] Defaulting to powershell
+[2025-11-03 07:14:01Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-03 07:14:01Z INFO ScriptHandler] Location: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'B:\JS-sample\weather_app\actions-runner\_work\_temp\80da01f1-5775-4a25-afa2-b17d188928f2.ps1'"'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   Working directory: 'B:\JS-sample\weather_app\actions-runner\_work\weather_app\weather_app'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-03 07:14:01Z INFO ProcessInvokerWrapper] Process started with process id 12256, waiting for process exit.
+[2025-11-03 07:14:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2e5c86e1-c4e2-492a-ad9f-8467d85c8d1b', success rate: 1/1.
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] Finished process 12256 with exit code 0, and elapsed time 00:00:01.0100564.
+[2025-11-03 07:14:02Z INFO CreateStepSummaryCommand] Step Summary file (B:\JS-sample\weather_app\actions-runner\_work\_temp\_runner_file_commands\step_summary_edbf816c-a87f-4247-8162-ef452eb913b6) does not exist; skipping attachment upload
+[2025-11-03 07:14:02Z INFO StepsRunner] Step result: 
+[2025-11-03 07:14:02Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "2e5c86e1-c4e2-492a-ad9f-8467d85c8d1b",
+  "stepContextName": "__run",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 4,
+  "startTime": "2025-11-03T07:13:59.5017609Z",
+  "finishTime": "2025-11-03T07:14:02.9194176Z"
+}.
+[2025-11-03 07:14:02Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-03 07:14:02Z INFO StepsRunner] Current state: job state = ''
+[2025-11-03 07:14:02Z INFO StepsRunner] Processing step: DisplayName='Run SonarSource/sonarqube-scan-action@v6'
+[2025-11-03 07:14:02Z INFO StepsRunner] Evaluating: success()
+[2025-11-03 07:14:02Z INFO StepsRunner] Result: true
+[2025-11-03 07:14:02Z INFO StepsRunner] Starting the step.
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:02Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-03 07:14:02Z INFO StepsRunner] Location: 'C:\Windows\System32\chcp.COM'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\System32\chcp.COM'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Working directory: 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] Process started with process id 28296, waiting for process exit.
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] Finished process 28296 with exit code 0, and elapsed time 00:00:00.0140781.
+[2025-11-03 07:14:02Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:14:02Z INFO ActionManager] Load action that reference repository from 'B:\JS-sample\weather_app\actions-runner\_work\_actions\SonarSource\sonarqube-scan-action\v6'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:14:02Z INFO ActionManifestManager] Ignore action property branding.
+[2025-11-03 07:14:02Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Official SonarQube Scan",
+  "description": "Scan your code with SonarQube Server and Cloud to detect issues in 30+ languages. (Formerly SonarQube and SonarCloud)\n",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "args"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 13,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 14,
+          "col": 3,
+          "lit": "projectBaseDir"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 14,
+          "lit": "."
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 18,
+          "col": 3,
+          "lit": "scannerVersion"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 22,
+          "col": 14,
+          "lit": "7.2.0.5079"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 23,
+          "col": 3,
+          "lit": "scannerBinariesUrl"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 14,
+          "lit": "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": false,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": null,
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-03 07:14:02Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-11-03 07:14:02Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-11-03 07:14:02Z INFO ActionManager] Action post node.js file: N/A.
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:14:02Z INFO ExecutionContext] Write event payload to B:\JS-sample\weather_app\actions-runner\_work\_temp\_github_workflow\event.json
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:14:02Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-03 07:14:02Z INFO ActionManifestManager] Input 'args': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 13,
+  "col": 14,
+  "lit": ""
+}
+[2025-11-03 07:14:02Z INFO ActionManifestManager] Input 'projectBaseDir': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 17,
+  "col": 14,
+  "lit": "."
+}
+[2025-11-03 07:14:02Z INFO ActionManifestManager] Input 'scannerVersion': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 22,
+  "col": 14,
+  "lit": "7.2.0.5079"
+}
+[2025-11-03 07:14:02Z INFO ActionManifestManager] Input 'scannerBinariesUrl': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 26,
+  "col": 14,
+  "lit": "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli"
+}
+[2025-11-03 07:14:02Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-03 07:14:02Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:02Z INFO HostContext] Well known directory 'Externals': 'B:\JS-sample\weather_app\actions-runner\externals'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   File name: 'B:\JS-sample\weather_app\actions-runner\externals\node20\bin\node.exe'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Arguments: '"B:\JS-sample\weather_app\actions-runner\_work\_actions\SonarSource\sonarqube-scan-action\v6\dist/index.js"'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Working directory: 'B:\JS-sample\weather_app\actions-runner\_work\weather_app\weather_app'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-03 07:14:02Z INFO ProcessInvokerWrapper] Process started with process id 24464, waiting for process exit.
+[2025-11-03 07:14:03Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:03Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:03Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '5719718a-5bec-4759-9f9c-c6a909ad586d', success rate: 1/1.
+[2025-11-03 07:14:03Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-03 07:14:03Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, B:\JS-sample\weather_app\actions-runner\_diag\blocks\bcce249e-5ffa-4975-a3aa-e52782ef9ce0_2e5c86e1-c4e2-492a-ad9f-8467d85c8d1b.1
+[2025-11-03 07:14:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '5719718a-5bec-4759-9f9c-c6a909ad586d', success rate: 1/1.
+[2025-11-03 07:14:03Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-11-03 07:14:04Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-11-03 07:14:13Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:13Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:13Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record '5719718a-5bec-4759-9f9c-c6a909ad586d', success rate: 1/1.
+[2025-11-03 07:14:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record '5719718a-5bec-4759-9f9c-c6a909ad586d', success rate: 1/1.
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] Finished process 24464 with exit code 1, and elapsed time 00:00:16.9119446.
+[2025-11-03 07:14:19Z INFO CreateStepSummaryCommand] Step Summary file (B:\JS-sample\weather_app\actions-runner\_work\_temp\_runner_file_commands\step_summary_9e1a5238-75ca-4d93-8db0-d2bee69d8d10) is empty; skipping attachment upload
+[2025-11-03 07:14:19Z INFO StepsRunner] Step result: Failed
+[2025-11-03 07:14:19Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "SonarSource/sonarqube-scan-action",
+  "ref": "v6",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "5719718a-5bec-4759-9f9c-c6a909ad586d",
+  "stepContextName": "__SonarSource_sonarqube-scan-action",
+  "hasPreStep": false,
+  "hasPostStep": false,
+  "result": "failed",
+  "errorMessages": [
+    "Action failed: The process 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' failed with exit code 1"
+  ],
+  "executionTimeInSeconds": 17,
+  "startTime": "2025-11-03T07:14:02.9202837Z",
+  "finishTime": "2025-11-03T07:14:19.8617216Z"
+}.
+[2025-11-03 07:14:19Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2025-11-03 07:14:19Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-11-03 07:14:19Z INFO StepsRunner] Processing step: DisplayName='Post Run actions/checkout@v4'
+[2025-11-03 07:14:19Z INFO StepsRunner] Evaluating: always()
+[2025-11-03 07:14:19Z INFO StepsRunner] Result: true
+[2025-11-03 07:14:19Z INFO StepsRunner] Starting the step.
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:19Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-03 07:14:19Z INFO StepsRunner] Location: 'C:\Windows\System32\chcp.COM'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\System32\chcp.COM'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Working directory: 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-03 07:14:19Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] Process started with process id 19028, waiting for process exit.
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] Finished process 19028 with exit code 0, and elapsed time 00:00:00.0133620.
+[2025-11-03 07:14:19Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:14:19Z INFO ActionManager] Load action that reference repository from 'B:\JS-sample\weather_app\actions-runner\_work\_actions\actions\checkout\v4'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Actions': 'B:\JS-sample\weather_app\actions-runner\_work\_actions'
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-03 07:14:19Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-11-03 07:14:19Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-11-03 07:14:19Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:14:19Z INFO ExecutionContext] Write event payload to B:\JS-sample\weather_app\actions-runner\_work\_temp\_github_workflow\event.json
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Work': 'B:\JS-sample\weather_app\actions-runner\_work'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Temp': 'B:\JS-sample\weather_app\actions-runner\_work\_temp'
+[2025-11-03 07:14:19Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "a-gokulakannan/weather_app"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-03 07:14:19Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-11-03 07:14:19Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-03 07:14:19Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:19Z INFO HostContext] Well known directory 'Externals': 'B:\JS-sample\weather_app\actions-runner\externals'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   File name: 'B:\JS-sample\weather_app\actions-runner\externals\node20\bin\node.exe'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Arguments: '"B:\JS-sample\weather_app\actions-runner\_work\_actions\actions\checkout\v4\dist/index.js"'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Working directory: 'B:\JS-sample\weather_app\actions-runner\_work\weather_app\weather_app'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-03 07:14:19Z INFO ProcessInvokerWrapper] Process started with process id 15716, waiting for process exit.
+[2025-11-03 07:14:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record '5719718a-5bec-4759-9f9c-c6a909ad586d', success rate: 1/1.
+[2025-11-03 07:14:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record '378d88dd-0bac-4fbc-aa9b-1faa5d304570', success rate: 1/1.
+[2025-11-03 07:14:20Z INFO AddMaskCommandExtension] Add new secret mask with length of 32
+[2025-11-03 07:14:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record '378d88dd-0bac-4fbc-aa9b-1faa5d304570', success rate: 1/1.
+[2025-11-03 07:14:20Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-03 07:14:20Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, B:\JS-sample\weather_app\actions-runner\_diag\blocks\bcce249e-5ffa-4975-a3aa-e52782ef9ce0_5719718a-5bec-4759-9f9c-c6a909ad586d.1
+[2025-11-03 07:14:21Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:21Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-03 07:14:21Z INFO ProcessInvokerWrapper] Finished process 15716 with exit code 0, and elapsed time 00:00:01.2642215.
+[2025-11-03 07:14:21Z INFO CreateStepSummaryCommand] Step Summary file (B:\JS-sample\weather_app\actions-runner\_work\_temp\_runner_file_commands\step_summary_8f112c28-321f-4f3a-b603-03535cc66165) is empty; skipping attachment upload
+[2025-11-03 07:14:21Z INFO StepsRunner] Step result: 
+[2025-11-03 07:14:21Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Post",
+  "stepId": "378d88dd-0bac-4fbc-aa9b-1faa5d304570",
+  "result": "succeeded",
+  "errorMessages": [
+    "The process 'C:\\Program Files\\Git\\cmd\\git.exe' failed with exit code 128"
+  ],
+  "executionTimeInSeconds": 2,
+  "startTime": "2025-11-03T07:14:19.864164Z",
+  "finishTime": "2025-11-03T07:14:21.1617103Z"
+}.
+[2025-11-03 07:14:21Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-03 07:14:21Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-11-03 07:14:21Z INFO JobRunner] Finalize job.
+[2025-11-03 07:14:21Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:21Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:21Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:14:21Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:21Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:21Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:14:21Z INFO JobExtension] Initialize Env context
+[2025-11-03 07:14:21Z INFO JobExtension] Initialize steps context
+[2025-11-03 07:14:21Z INFO JobExtension] Total accessible running process: 305.
+[2025-11-03 07:14:21Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "719a4fb6-8706-4785-bedf-7342e129d759",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-11-03T07:14:21.1714792Z",
+  "finishTime": "2025-11-03T07:14:21.1839736Z"
+}.
+[2025-11-03 07:14:21Z INFO JobRunner] Job result after all job steps finish: Failed
+[2025-11-03 07:14:21Z INFO JobRunner] Completing the job execution context.
+[2025-11-03 07:14:21Z INFO JobRunner] Shutting down the job server queue.
+[2025-11-03 07:14:21Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2025-11-03 07:14:21Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-11-03 07:14:22Z INFO JobServerQueue] All queue process task stopped.
+[2025-11-03 07:14:22Z INFO JobServerQueue] Try to append 1 batches web console lines for record '378d88dd-0bac-4fbc-aa9b-1faa5d304570', success rate: 1/1.
+[2025-11-03 07:14:22Z INFO JobServerQueue] Try to append 1 batches web console lines for record '719a4fb6-8706-4785-bedf-7342e129d759', success rate: 1/1.
+[2025-11-03 07:14:22Z INFO JobServerQueue] Web console line queue drained.
+[2025-11-03 07:14:22Z INFO JobServerQueue] Uploading 3 files in one shot.
+[2025-11-03 07:14:22Z INFO JobServerQueue] Try to upload 3 log files or attachments, success rate: 3/3.
+[2025-11-03 07:14:22Z INFO JobServerQueue] File upload queue drained.
+[2025-11-03 07:14:22Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-11-03 07:14:22Z INFO JobServerQueue] Uploading 3 file(s) in one shot through results service.
+[2025-11-03 07:14:22Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-03 07:14:22Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, B:\JS-sample\weather_app\actions-runner\_diag\blocks\bcce249e-5ffa-4975-a3aa-e52782ef9ce0_378d88dd-0bac-4fbc-aa9b-1faa5d304570.1
+[2025-11-03 07:14:23Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-03 07:14:23Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, B:\JS-sample\weather_app\actions-runner\_diag\blocks\bcce249e-5ffa-4975-a3aa-e52782ef9ce0_719a4fb6-8706-4785-bedf-7342e129d759.1
+[2025-11-03 07:14:24Z INFO JobServerQueue] Got a job log file to send to results service.
+[2025-11-03 07:14:24Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, B:\JS-sample\weather_app\actions-runner\_diag\blocks\bcce249e-5ffa-4975-a3aa-e52782ef9ce0_cb93bdec-2fb0-579e-84eb-a9d6b3839cde.1
+[2025-11-03 07:14:25Z INFO JobServerQueue] Tried to upload 3 file(s) to results, success rate: 3/3.
+[2025-11-03 07:14:25Z INFO JobServerQueue] Results upload queue drained.
+[2025-11-03 07:14:25Z INFO JobServerQueue] Timeline update queue drained.
+[2025-11-03 07:14:25Z INFO JobServerQueue] Disposing job server ...
+[2025-11-03 07:14:25Z INFO JobServerQueue] Disposing results server ...
+[2025-11-03 07:14:25Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2025-11-03 07:14:25Z INFO TempDirectoryManager] Cleaning runner temp folder: B:\JS-sample\weather_app\actions-runner\_work\_temp
+[2025-11-03 07:14:25Z INFO HostContext] Well known directory 'Bin': 'B:\JS-sample\weather_app\actions-runner\bin'
+[2025-11-03 07:14:25Z INFO HostContext] Well known directory 'Root': 'B:\JS-sample\weather_app\actions-runner'
+[2025-11-03 07:14:25Z INFO HostContext] Well known directory 'Diag': 'B:\JS-sample\weather_app\actions-runner\_diag'
+[2025-11-03 07:14:25Z INFO HostContext] Well known config file 'Telemetry': 'B:\JS-sample\weather_app\actions-runner\_diag\.telemetry'
+[2025-11-03 07:14:25Z INFO JobRunner] Raising job completed against run service
+[2025-11-03 07:14:26Z INFO Worker] Job completed.
