@@ -1,0 +1,6 @@
+projectKey=JS-sample
+serverUrl=http://localhost:9000
+serverVersion=25.10.0.114319
+dashboardUrl=http://localhost:9000/dashboard?id=JS-sample
+ceTaskId=a12fb635-2ce1-475b-b956-d308e3c9b5f2
+ceTaskUrl=http://localhost:9000/api/ce/task?id=a12fb635-2ce1-475b-b956-d308e3c9b5f2
